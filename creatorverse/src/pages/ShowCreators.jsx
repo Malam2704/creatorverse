@@ -18,6 +18,7 @@ export default function ShowCreators({ data }) {
                     <CreatorCard creator={creator}></CreatorCard>
                 </div>
             ))}
+            <Button onClick={() => navigate('/add')}>Create New Creator</Button>
         </div>
     );
 }
