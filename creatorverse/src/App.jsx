@@ -33,8 +33,8 @@ function App() {
       element: <ShowCreators data={creators} />,
     },
     {
-      path: "/view",
-      element: <ViewCreator />,
+      path: "/view/:id",
+      element: <ViewCreator data={creators} />,
     },
   ]);
 
