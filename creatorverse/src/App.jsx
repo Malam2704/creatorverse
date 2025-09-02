@@ -11,31 +11,32 @@ import ViewCreator from './pages/ViewCreator';
 import supabase from './client.js'
 import ShowCreators from './pages/ShowCreators';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <ShowCreators />,
-  },
-  {
-    path: "/add",
-    element: <AddCreator />,
-  },
-  {
-    path: "/edit",
-    element: <EditCreator />,
-  },
-  {
-    path: "/show",
-    element: <ShowCreator />,
-  },
-  {
-    path: "/view",
-    element: <ViewCreator />,
-  },
-]);
-
 function App() {
   const [count, setCount] = useState(0)
+  const [creators, setCreators] = useState([]);
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <ShowCreators data={creators} />,
+    },
+    {
+      path: "/add",
+      element: <AddCreator />,
+    },
+    {
+      path: "/edit",
+      element: <EditCreator />,
+    },
+    {
+      path: "/show",
+      element: <ShowCreators data={creators} />,
+    },
+    {
+      path: "/view",
+      element: <ViewCreator />,
+    },
+  ]);
 
   useEffect(() => {
     // Fetch data from Supabase
@@ -45,13 +46,15 @@ function App() {
         console.error('Error fetching creators:', error);
       } else {
         console.log('Fetched creators:', data);
+        setCreators(data);
       }
     };
     fetchData();
   }, []);
 
   return (
-    <RouterProvider router={router} />)
+    <RouterProvider router={router} />
+  )
 }
 
 export default App;

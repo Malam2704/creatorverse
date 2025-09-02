@@ -4,25 +4,26 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
-export default function CreatorCard({ name, url, description, imageURL }) {
+export default function CreatorCard({ creator }) {
+    console.log(creator.imageURL)
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="140"
-                    image={imageURL}
-                    alt={name}
+                    image={creator.imageURL}
+                    alt={creator.name}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {name}
+                        {creator.name}
                     </Typography>
                     <Typography gutterBottom variant="h5" component="div">
-                        {url}
+                        {creator.url}
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        {description}
+                        {creator.description}
                     </Typography>
                 </CardContent>
             </CardActionArea>
