@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export default function ViewCreator({ data }) {
     const { id } = useParams();
     const [creator, setCreator] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (data) {
@@ -19,6 +21,9 @@ export default function ViewCreator({ data }) {
             <h1>{creator?.name}</h1>
             <img src={creator?.imageURL} alt={creator?.name} />
             <p>{creator?.description}</p>
+            <Button variant="contained" onClick={() => navigate(`/edit/${id}`)}>
+                Edit Creator
+            </Button>
         </div>
     );
 }

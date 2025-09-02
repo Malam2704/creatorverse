@@ -25,8 +25,8 @@ function App() {
       element: <AddCreator />,
     },
     {
-      path: "/edit",
-      element: <EditCreator />,
+      path: "/edit/:id",
+      element: <EditCreator data={creators} />,
     },
     {
       path: "/show",
