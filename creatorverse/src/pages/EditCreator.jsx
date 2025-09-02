@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, TextField, Button, Typography, Paper } from '@mui/material';
+import { Box, TextField, Button, Typography, Container, Card, CardContent } from '@mui/material';
 import supabase from '../client.js';
 
 export default function EditCreator({ data }) {
@@ -44,25 +44,77 @@ export default function EditCreator({ data }) {
             console.error('Error:', error);
         } else {
             console.log('Updated:', data);
-            navigate('/');
+            window.location.href = '/';
         }
     };
 
     return (
-        <Paper sx={{ maxWidth: 400, mx: 'auto', mt: 4, p: 3 }}>
-            <Typography variant="h5" align="center">
+        <Container maxWidth="md" sx={{ py: 4 }}>
+            <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 4 }}>
                 Edit Creator
             </Typography>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <TextField name="name" label="Creator Name" value={creator.name} onChange={handleChange} />
-                <TextField name="url" label="Creator URL" type="url" value={creator.url} onChange={handleChange} />
-                <TextField name="imageURL" label="Image URL" type="url" value={creator.imageURL} onChange={handleChange} />
-                <TextField name="description" label="Description" value={creator.description} onChange={handleChange} />
-                <Button variant="contained" size="large" sx={{ mt: 1 }} onClick={handleSubmit}>
-                    Update Creator
-                </Button>
-            </Box>
-        </Paper>
+            <Card sx={{ maxWidth: 600, mx: 'auto' }}>
+                <CardContent sx={{ p: 4 }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                        <TextField
+                            name="name"
+                            label="Creator Name"
+                            value={creator.name}
+                            onChange={handleChange}
+                            fullWidth
+                            variant="outlined"
+                        />
+                        <TextField
+                            name="url"
+                            label="Creator URL"
+                            type="url"
+                            value={creator.url}
+                            onChange={handleChange}
+                            fullWidth
+                            variant="outlined"
+                        />
+                        <TextField
+                            name="imageURL"
+                            label="Image URL"
+                            type="url"
+                            value={creator.imageURL}
+                            onChange={handleChange}
+                            fullWidth
+                            variant="outlined"
+                        />
+                        <TextField
+                            name="description"
+                            label="Description"
+                            value={creator.description}
+                            onChange={handleChange}
+                            multiline
+                            rows={4}
+                            fullWidth
+                            variant="outlined"
+                        />
+
+                        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', mt: 2 }}>
+                            <Button
+                                variant="contained"
+                                size="large"
+                                onClick={handleSubmit}
+                                sx={{ px: 4, py: 1.5 }}
+                            >
+                                Update Creator
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                size="large"
+                                onClick={() => navigate('/')}
+                                sx={{ px: 4, py: 1.5 }}
+                            >
+                                Cancel
+                            </Button>
+                        </Box>
+                    </Box>
+                </CardContent>
+            </Card>
+        </Container>
     );
 }
