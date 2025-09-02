@@ -20,8 +20,7 @@ export default function AddCreator() {
             console.error('Error:', error);
         } else {
             console.log('Added:', data);
-            // Reset form
-            setCreator({ name: '', url: '', imageURL: '', description: '' });
+            setNewCreator({ name: '', url: '', imageURL: '', description: '' });
         }
     };
 
@@ -39,6 +38,7 @@ export default function AddCreator() {
                 <Button variant="contained" size="large" sx={{ mt: 1 }} onClick={handleSubmit}>
                     Add Creator
                 </Button>
+                <Button onClick={() => navigate('/')}>Navigate Home</Button>
             </Box>
         </Paper>
     );

@@ -44,6 +44,7 @@ export default function EditCreator({ data }) {
             console.error('Error:', error);
         } else {
             console.log('Updated:', data);
+            navigate('/');
         }
     };
 
@@ -62,8 +63,6 @@ export default function EditCreator({ data }) {
                     Update Creator
                 </Button>
             </Box>
-
-            <Button onClick={() => navigate('/')}>Navigate Home</Button>
         </Paper>
     );
 }

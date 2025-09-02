@@ -24,6 +24,9 @@ export default function ViewCreator({ data }) {
             <Button variant="contained" onClick={() => navigate(`/edit/${id}`)}>
                 Edit Creator
             </Button>
+            <Button variant="contained" onClick={() => navigate(`/`)}>
+                Go Back
+            </Button>
         </div>
     );
 }
